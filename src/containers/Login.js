@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import LoaderButton from "../components/LoaderButton";
 import { Auth } from "aws-amplify";
+import { Link } from "react-router-dom";
 
+/*Components*/
+import LoaderButton from "../components/LoaderButton";
+
+/*Styles*/
 import "./Login.css";
 
 export default function Login(props) {
@@ -49,15 +53,15 @@ export default function Login(props) {
             onChange={e => setPassword(e.target.value)}
           />
         </FormGroup>
+        <Link to="/login/reset">Forgot password?</Link>
         <LoaderButton
           block
           type={"submit"}
           bsSize={"large"}
           isLoading={isLoading}
+          text={"Login"}
           disabled={!validateForm()}
-        >
-          Login
-        </LoaderButton>
+        />
       </form>
     </div>
   );
