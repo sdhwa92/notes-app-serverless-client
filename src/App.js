@@ -33,7 +33,7 @@ function App(props) {
     await Auth.signOut();
 
     userHasAuthenticated(false);
-    
+
     props.history.push("/login");
   }
 
