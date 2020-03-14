@@ -43,7 +43,14 @@ export default class ChangeEmail extends Component {
 
     try {
       const user = await Auth.currentAuthenticatedUser();
-      await Auth.updateUserAttributes(user, { email: this.state.email });
+      const currentUserAttributes = await Auth.userAttributes(user);
+      
+      if (currentUserAttributes["email_verified"] !== "false" ) {
+        await Auth.verifyCurrentUserAttribute("email");
+      }
+      else {
+        await Auth.updateUserAttributes(user, { email: this.state.email });
+      }
 
       this.setState({ codeSent: true });
     } catch (e) {
