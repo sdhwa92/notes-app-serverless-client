@@ -24,7 +24,7 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "notes",
+        name: "notes", // the api name being used by aws-amplify
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION
       }
