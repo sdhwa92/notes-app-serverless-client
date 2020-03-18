@@ -69,6 +69,14 @@ export default function Notes(props) {
     setIsLoading(true);
   }
 
+  function deleteNote() {
+    return API.del("notes", `/notes/${props.match.params.id}`);
+  }
+
+  function deleteImage() {
+    return Storage.vault.remove(note.attachment);
+  }
+
   async function handleDelete(event) {
     event.preventDefault();
 
@@ -81,6 +89,18 @@ export default function Notes(props) {
     }
 
     setIsDeleting(true);
+
+    try {
+      if ( note.attachment ) {
+        await deleteImage();
+      }
+      await deleteNote();
+
+      props.history.push("/");
+    } catch (e) {
+      alert(e.message);
+      setIsDeleting(false);
+    }
   }
 
   return (
