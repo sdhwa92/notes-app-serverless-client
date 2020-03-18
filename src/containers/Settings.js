@@ -29,6 +29,14 @@ export default class Settings extends Component {
             text={"Change Password"}
           />
         </LinkContainer>
+        <LinkContainer to={"/settings/payment"}>
+          <LoaderButton
+            block
+            bsSize="large"
+            bsStyle="primary"
+            text="Pay for Notes"
+          />
+        </LinkContainer>
       </div>
     );
   }

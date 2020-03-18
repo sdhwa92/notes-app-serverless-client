@@ -1,5 +1,6 @@
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
+  STRIPE_KEY: "pk_test_XsL6itzvi2Nv5QI6hAk53CCf",
   s3: {
     REGION: "ap-southeast-2",
     BUCKET: "daehwa-notes-app-uploads"
